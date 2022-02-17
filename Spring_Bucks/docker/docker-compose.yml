@@ -1,0 +1,24 @@
+version: '2'
+services:
+    mysql:
+        container_name: spring_bucks_mysql
+        extends:
+            file: mysql.yml
+            service: mysql
+#        networks:
+#            spring_bucks-net:
+#                ipv4_address: 172.23.0.6
+    redis:
+        container_name: spring_bucks_redis
+        extends:
+            file: redis.yml
+            service: redis
+#        networks:
+#            spring_bucks-net:
+#                ipv4_address: 172.23.0.7
+#networks:
+#    spring_bucks-net:
+#        ipam:
+#            config:
+#                - subnet: 172.23.0.0/16
+#                  gateway: 172.23.0.1

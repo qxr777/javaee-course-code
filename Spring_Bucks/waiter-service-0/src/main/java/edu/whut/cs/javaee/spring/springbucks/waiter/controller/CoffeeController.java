@@ -1,5 +1,6 @@
 package edu.whut.cs.javaee.spring.springbucks.waiter.controller;
 
+import edu.whut.cs.javaee.spring.springbucks.waiter.controller.exception.FormValidationException;
 import edu.whut.cs.javaee.spring.springbucks.waiter.controller.request.NewCoffeeRequest;
 import edu.whut.cs.javaee.spring.springbucks.waiter.model.Coffee;
 import edu.whut.cs.javaee.spring.springbucks.waiter.service.CoffeeService;
@@ -13,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,31 +33,42 @@ public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
 
-//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    @ResponseBody
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
-//                            BindingResult result) {
-//        if (result.hasErrors()) {
-//            // 这里先简单处理一下，后续讲到异常处理时会改
-//            log.warn("Binding Errors: {}", result);
-//            return null;
-//        }
-//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
-//    }
-
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
+    public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
+                            BindingResult result) {
+        if (result.hasErrors()) {
+            log.warn("Binding Errors: {}", result);
+            throw new FormValidationException(result);
+        }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
 
-    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    @ResponseBody
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
+//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+//    }
+
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
+    public Coffee addJsonCoffee(@Valid @RequestBody NewCoffeeRequest newCoffee,
+                                BindingResult result) {
+        if (result.hasErrors()) {
+            log.warn("Binding Errors: {}", result);
+            throw new ValidationException(result.toString());
+        }
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
+
+//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
+//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+//    }
 
     @PostMapping(path = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody

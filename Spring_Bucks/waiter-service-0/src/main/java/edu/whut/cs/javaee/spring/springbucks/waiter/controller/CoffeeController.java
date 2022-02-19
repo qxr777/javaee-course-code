@@ -108,12 +108,14 @@ public class CoffeeController {
     @ResponseBody
     public Coffee getById(@PathVariable Long id) {
         Coffee coffee = coffeeService.getCoffee(id);
+        log.info("Coffee {}:", coffee);
         return coffee;
     }
 
     @GetMapping(path = "/", params = "name")
     @ResponseBody
     public Coffee getByName(@RequestParam String name) {
-        return coffeeService.getCoffee(name);
+        Coffee coffee = coffeeService.getCoffee(name);
+        return coffee;
     }
 }

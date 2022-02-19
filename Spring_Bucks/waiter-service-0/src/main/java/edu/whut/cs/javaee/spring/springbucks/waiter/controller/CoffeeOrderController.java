@@ -37,7 +37,9 @@ public class CoffeeOrderController {
     @GetMapping("/{id}")
     @ResponseBody
     public CoffeeOrder getOrder(@PathVariable("id") Long id) {
-        return orderService.get(id);
+        CoffeeOrder order = orderService.get(id);
+        log.info("Get Order: {}", order);
+        return order;
     }
 
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE,

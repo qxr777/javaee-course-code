@@ -1,6 +1,6 @@
-package edu.whut.cs.javaee.spring.nosql.cachedemo;
+package edu.whut.cs.javaee.spring.nosql.cacheredisdemo;
 
-import edu.whut.cs.javaee.spring.nosql.cachedemo.service.CoffeeService;
+import edu.whut.cs.javaee.spring.nosql.cacheredisdemo.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,22 +16,22 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableJpaRepositories
 @EnableCaching(proxyTargetClass = true)
-public class SpringBucksApplication implements ApplicationRunner {
+public class CacheRedisDemoApplication implements ApplicationRunner {
 	@Autowired
 	private CoffeeService coffeeService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBucksApplication.class, args);
+		SpringApplication.run(CacheRedisDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		log.info("Count: {}", coffeeService.findAllCoffee().size());
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			log.info("Reading from cache.");
 			coffeeService.findAllCoffee();
 		}
-		coffeeService.reloadCoffee();
+		Thread.sleep(5_000);
 		log.info("Reading after refresh.");
 		coffeeService.findAllCoffee().forEach(c -> log.info("Coffee {}", c.getName()));
 	}

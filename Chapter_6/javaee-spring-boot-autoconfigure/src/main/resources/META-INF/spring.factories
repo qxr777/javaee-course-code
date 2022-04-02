@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+edu.whut.cs.javaee.spring.boot.javaeespringbootautoconfigure.GreetingAutoConfiguration

@@ -2,7 +2,8 @@
 
 ### 使用RedisRepository 访问缓存服务器
 ### 使用Redis作为缓存服务器
-### 以name缓存单个Coffee
+### 新增CoffeeCache 和 CoffeeCacheRepository
+### 以name缓存单个CoffeeCache
 
 For further reference, please consider the following sections:
 

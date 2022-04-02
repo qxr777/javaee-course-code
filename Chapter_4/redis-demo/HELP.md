@@ -1,7 +1,7 @@
 # Getting Started
 
+### 使用Redis作为缓存服务器，Lettuce作为缓存数据连接池
 ### 使用RedisTemplate 或 @Cacheable 访问缓存服务器
-### 使用Redis作为缓存服务器
 ### 以name缓存单个Coffee
 
 For further reference, please consider the following sections:

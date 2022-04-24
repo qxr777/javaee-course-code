@@ -15,3 +15,8 @@ services:
         extends:
             file: redis.yml
             service: redis
+    consul:
+        container_name: spring_bucks_consul
+        extends:
+            file: consul.yml
+            service: consul

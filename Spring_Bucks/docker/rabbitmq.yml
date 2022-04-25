@@ -1,0 +1,10 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=spring
+      - RABBITMQ_DEFAULT_PASS=spring
+    ports:
+      - 5672:5672
+      - 15672:15672

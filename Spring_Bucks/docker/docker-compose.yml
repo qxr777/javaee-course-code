@@ -20,3 +20,8 @@ services:
         extends:
             file: consul.yml
             service: consul
+    rabbitmq:
+        container_name: spring_bucks_rabbitmq
+        extends:
+            file: rabbitmq.yml
+            service: rabbitmq

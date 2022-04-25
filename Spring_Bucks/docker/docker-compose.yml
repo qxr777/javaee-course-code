@@ -25,3 +25,8 @@ services:
         extends:
             file: rabbitmq.yml
             service: rabbitmq
+    zipkin:
+        container_name: spring_bucks_zipkin
+        extends:
+            file: zipkin.yml
+            service: zipkin

@@ -24,6 +24,7 @@ CREATE TABLE `t_order` (
   `update_time` timestamp NULL DEFAULT NULL,
   `customer` varchar(255) DEFAULT NULL,
   `waiter` varchar(255) DEFAULT NULL,
+  `barista` varchar(255) DEFAULT NULL,
   `discount` int(10),
   `total` bigint(10) DEFAULT NULL,
   `state` int(255) NOT NULL,

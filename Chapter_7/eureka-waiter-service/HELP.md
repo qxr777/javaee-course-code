@@ -1,6 +1,9 @@
 # Getting Started
 
 ### Reference Documentation
+### @EnableDiscoveryClient 比 @EnableEurekaClient 抽象更好，方便更换服务注册
+### 可以同时启动多个程序
+### 管理入口 http://localhost:8761/
 
 For further reference, please consider the following sections:
 

@@ -1,8 +1,8 @@
 # Getting Started
 
 ### Reference Documentation
-### Eureka服务注册中心，只需要添加 @EnableEurekaServer
-### 管理入口 http://localhost:8761/
+### 需要先启动eureka-server，eureka-waiter-service
+### 从注册中心获得waiter-service服务信息，无需指定主机地址和端口
 
 For further reference, please consider the following sections:
 

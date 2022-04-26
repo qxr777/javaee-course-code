@@ -5,7 +5,7 @@
 ### Dockerfile 包含了一条条构建镜像所需的指令和说明
 ### Terminal中执行mvn package实现docker镜像构建，docker images检查
 ### Docker Desktop中可以push to hub
-### Docker Desktop中可以Run，需要指定8080端口映射
+### Docker Desktop中可以Run，需要指定8080端口映射 或 >docker run --name docker-demo -p 8080:8080 qxr777/docker-demo:0.0.1-SNAPSHOT
 
 For further reference, please consider the following sections:
 

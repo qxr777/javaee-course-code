@@ -26,13 +26,6 @@ public class ConsulCustomerServiceApplication {
 		SpringApplication.run(ConsulCustomerServiceApplication.class, args);
 	}
 
-
-//	@Bean
-//	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-////		return new RestTemplate();
-//		return builder.build();
-//	}
-
 	@Bean
 	public HttpComponentsClientHttpRequestFactory requestFactory() {
 		PoolingHttpClientConnectionManager connectionManager =

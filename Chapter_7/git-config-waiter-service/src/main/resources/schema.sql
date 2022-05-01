@@ -1,9 +1,6 @@
-# 注意 MySQL 与 H2 的语法差异
-# H2: drop table tbl if exists;
-# MySQL: drop table if exists tbl;
-drop table if exists t_coffee;
-drop table if exists t_order;
-drop table if exists t_order_coffee;
+drop table t_coffee if exists;
+drop table t_order if exists;
+drop table t_order_coffee if exists;
 
 create table t_coffee (
     id bigint auto_increment,
@@ -19,11 +16,7 @@ create table t_order (
     create_time timestamp,
     update_time timestamp,
     customer varchar(255),
-    waiter varchar(255),
-    barista varchar(255),
-    discount integer,
-    total bigint,
-    state integer,
+    state integer not null,
     primary key (id)
 );
 

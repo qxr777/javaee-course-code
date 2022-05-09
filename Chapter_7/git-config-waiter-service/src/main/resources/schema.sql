@@ -17,6 +17,10 @@ create table t_order (
     update_time timestamp,
     customer varchar(255),
     state integer not null,
+    waiter varchar(255),
+    barista varchar(255),
+    total bigint,
+    discount integer,
     primary key (id)
 );
 

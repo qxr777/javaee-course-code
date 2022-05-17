@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "6951e71b-f098-4959-a16e-89d2f5fde259",
-		"name": "SpringBucksCollection",
+		"_postman_id": "9f389be5-6a88-49d8-b170-66dd1dd73c72",
+		"name": "Spring Bucks",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -135,6 +135,320 @@
 			]
 		},
 		{
+			"name": "Spring Cloud",
+			"item": [
+				{
+					"name": "Customer - 读菜单",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/customer-service/customer/menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"customer-service",
+								"customer",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer - 下单",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/customer-service/customer/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"customer-service",
+								"customer",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 查询咖啡",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost/waiter/coffee/?name=mocha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter",
+								"coffee",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mocha"
+								}
+							]
+						},
+						"description": "关注返回的Content-Type"
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 创建订单",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": \"Li Lei\",\n  \"items\": [\n    \"mocha\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost/waiter-service/order/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 创建单个咖啡 - \b表单",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Americano",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25.00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/waiter-service/coffee/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"coffee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 批量创建咖啡",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/qixin/IdeaProjects/javaee-course-code/Spring_Bucks/waiter-service-0/src/main/resources/coffee.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/waiter-service/coffee/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"coffee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 创建单个咖啡 - JSON",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"latte\",\n  \"price\": 25.00\n}"
+						},
+						"url": {
+							"raw": "http://localhost/waiter-service/coffee/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"coffee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 支付订单",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\": \"PAID\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost/waiter-service/order/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Waiter - 查询订单",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/waiter-service/order/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"waiter-service",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刷新单点订单折扣",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刷新配置中心订单折扣",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/actuator/bus-refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"actuator",
+								"bus-refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "查询咖啡",
 			"request": {
 				"method": "GET",
@@ -253,8 +567,7 @@
 					{
 						"key": "Content-Type",
 						"value": "multipart/form-data",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -262,7 +575,8 @@
 					"formdata": [
 						{
 							"key": "file",
-							"type": "file"
+							"type": "file",
+							"src": "/Users/qixin/IdeaProjects/javaee-course-code/Spring_Bucks/waiter-service-0/src/main/resources/coffee.txt"
 						}
 					]
 				},
@@ -295,7 +609,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Americano\",\n  \"price\": 25.00\n}"
+					"raw": "{\n  \"name\": \"latte\",\n  \"price\": 25.00\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/coffee/",
@@ -316,9 +630,24 @@
 			"name": "静态资源请求",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "If-Modified-Since",
+						"value": "Fri, 18 Feb 2022 13:53:26 GMT",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:8080/static/spring.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"static",
+						"spring.png"
+					]
 				}
 			},
 			"response": []

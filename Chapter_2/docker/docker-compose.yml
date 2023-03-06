@@ -1,0 +1,7 @@
+version: '2'
+services:
+    mysql:
+        container_name: course_mysql
+        extends:
+            file: mysql.yml
+            service: mysql

@@ -1,0 +1,18 @@
+version: '2'
+services:
+    mysql:
+        image: mysql:5.7.22
+        volumes:
+            - ./data/mysql/conf:/etc/mysql/conf.d
+            - ./data/mysql/data:/var/lib/mysql
+            - ./data/testdb.sql:/docker-entrypoint-initdb.d/testdb.sql
+#            - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ROOT_PASSWORD=123456
+            - MYSQL_DATABASE=testdb
+            - LANG=C.UTF-8
+            - TZ=Asia/Shanghai
+        ports:
+            - 3306:3306
+        command: mysqld  --skip-ssl --character_set_server=utf8mb4 --sql_mode=""

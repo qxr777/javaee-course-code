@@ -52,6 +52,7 @@ public class RedisDemoApplication implements ApplicationRunner {
 		log.info("Coffee {}", c);
 
 		for (int i = 0; i < 5; i++) {
+			log.info("Reading from cache.");
 			c = coffeeService.findOneCoffee("mocha");
 		}
 

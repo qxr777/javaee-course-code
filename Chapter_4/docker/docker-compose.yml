@@ -1,0 +1,12 @@
+version: '2'
+services:
+    mongo:
+        container_name: course_mongo
+        extends:
+            file: mongo.yml
+            service: mongo
+    redis:
+        container_name: course_redis
+        extends:
+            file: redis.yml
+            service: redis

@@ -31,7 +31,7 @@ public class CacheRedisDemoApplication implements ApplicationRunner {
 			log.info("Reading from cache.");
 			coffeeService.findAllCoffee();
 		}
-		Thread.sleep(5_000);
+		Thread.sleep(5000);
 		log.info("Reading after refresh.");
 		coffeeService.findAllCoffee().forEach(c -> log.info("Coffee {}", c.getName()));
 	}

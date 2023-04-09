@@ -10,7 +10,12 @@ public class GreetingApplicationRunner implements ApplicationRunner {
         log.info("Initializing GreetingApplicationRunner.");
     }
 
+    @Override
     public void run(ApplicationArguments args) throws Exception {
         log.info("Hello everyone! We all like Spring! ");
+    }
+
+    public void greet() {
+        log.info("My greeting is on the way!");
     }
 }

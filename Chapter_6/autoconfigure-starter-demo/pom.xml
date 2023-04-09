@@ -22,11 +22,24 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>edu.whut.cs.javaee.spring.boot</groupId>
-            <artifactId>javaee-spring-boot-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>edu.whut.cs.javaee.spring.boot</groupId>-->
+<!--            <artifactId>javaee-spring-boot-starter</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+        <!-- 以下是基于Spring Boot的自动配置 -->
+        		<dependency>
+        			<groupId>edu.whut.cs.javaee.spring.boot</groupId>
+        			<artifactId>javaee-spring-boot-autoconfigure</artifactId>
+        			<version>0.0.1-SNAPSHOT</version>
+        		</dependency>
+
+        		<dependency>
+        			<groupId>edu.whut.cs.javaee.spring.boot</groupId>
+        			<artifactId>javaee-greeting</artifactId>
+        			<version>0.0.1-SNAPSHOT</version>
+        		</dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

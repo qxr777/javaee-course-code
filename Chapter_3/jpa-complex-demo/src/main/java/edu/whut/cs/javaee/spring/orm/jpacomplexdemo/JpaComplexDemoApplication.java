@@ -40,7 +40,7 @@ public class JpaComplexDemoApplication implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        initOrders();
+//        initOrders();
         findOrders();
     }
 
@@ -93,6 +93,12 @@ public class JpaComplexDemoApplication implements ApplicationRunner {
 
         list = orderRepository.findByItems_Name("latte");
         log.info("findByItems_Name: {}", getJoinedOrderId(list));
+
+        Coffee coffee = coffeeRepository.findByName("latte");
+        log.info("findByName: {}", coffee);
+
+        List<Coffee> coffeeList = coffeeRepository.findByPriceLessThan(Money.of(CurrencyUnit.of("CNY"), 30.0));
+        log.info("findByPriceLess: {}", coffeeList);
     }
 
     private String getJoinedOrderId(List<CoffeeOrder> list) {

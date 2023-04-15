@@ -1,5 +1,8 @@
 package edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo;
 
+//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.mapper.CoffeeMapper;
+//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.Coffee;
+//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.CoffeeExample;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;

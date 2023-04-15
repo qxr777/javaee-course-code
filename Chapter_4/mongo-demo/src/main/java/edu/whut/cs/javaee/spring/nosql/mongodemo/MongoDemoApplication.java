@@ -66,7 +66,7 @@ public class MongoDemoApplication implements ApplicationRunner {
 		Coffee updateOne = mongoTemplate.findById(saved.getId(), Coffee.class);
 		log.info("Update Result: {}", updateOne);
 
-		mongoTemplate.remove(updateOne);
+//		mongoTemplate.remove(updateOne);
 	}
 }
 

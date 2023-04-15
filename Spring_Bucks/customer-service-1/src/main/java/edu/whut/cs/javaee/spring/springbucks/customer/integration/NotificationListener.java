@@ -26,7 +26,7 @@ public class NotificationListener {
             orderService.updateState(id,
                     OrderStateRequest.builder().state(OrderState.TAKEN).build());
         } else {
-            log.warn("Order {} is NOT READY. Why are you notify me?", id);
+            log.warn("Order {} is NOT READY. Why do you notify me?", id);
         }
     }
 }

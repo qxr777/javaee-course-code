@@ -4,6 +4,8 @@
 ### Thymeleaf模板在resources/templates
 ### 启动后，访问 http://127.0.0.1:8080/order/
 ### 填写客人名，多选coffee
+### DispatcherServlet 会执行render方法，选择ThymeleafView
+### 创建订单后的视图是 redirect:/order/idx
 
 For further reference, please consider the following sections:
 

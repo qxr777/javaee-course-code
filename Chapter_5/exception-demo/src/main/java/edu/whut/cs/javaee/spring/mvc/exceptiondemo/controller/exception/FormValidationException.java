@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Getter
 @AllArgsConstructor
 public class FormValidationException extends RuntimeException {
-    private BindingResult result;
+    private String result;
 }

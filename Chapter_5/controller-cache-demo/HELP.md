@@ -3,6 +3,7 @@
 ### Reference Documentation
 ### 通过postman访问 http://127.0.0.1:8080/static/spring.png
 ### 如果请求header带上 If-Modified-Since 属性，返回 304Not Modified
+### 深入DispatcherServlet源代码 doDispatch()会根据lastModified决定是否有必要继续handle
 ### 在CoffeeController中设置缓存 max-age
 
 For further reference, please consider the following sections:

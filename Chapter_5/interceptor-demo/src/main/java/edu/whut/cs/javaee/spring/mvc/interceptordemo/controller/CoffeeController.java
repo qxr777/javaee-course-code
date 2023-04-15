@@ -1,9 +1,8 @@
-package edu.whut.cs.javaee.spring.mvc.exceptiondemo.controller;
+package edu.whut.cs.javaee.spring.mvc.interceptordemo.controller;
 
-import edu.whut.cs.javaee.spring.mvc.exceptiondemo.controller.exception.FormValidationException;
-import edu.whut.cs.javaee.spring.mvc.exceptiondemo.controller.request.NewCoffeeRequest;
-import edu.whut.cs.javaee.spring.mvc.exceptiondemo.model.Coffee;
-import edu.whut.cs.javaee.spring.mvc.exceptiondemo.service.CoffeeService;
+import edu.whut.cs.javaee.spring.mvc.interceptordemo.controller.request.NewCoffeeRequest;
+import edu.whut.cs.javaee.spring.mvc.interceptordemo.model.Coffee;
+import edu.whut.cs.javaee.spring.mvc.interceptordemo.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -13,20 +12,17 @@ import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import javax.validation.ValidationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/coffee")
 @Slf4j
 public class CoffeeController {
@@ -34,45 +30,18 @@ public class CoffeeController {
     private CoffeeService coffeeService;
 
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
-                            BindingResult result) {
-        if (result.hasErrors()) {
-            log.warn("Binding Errors: {}", result);
-            throw new FormValidationException(result.toString());
-        }
+    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
 
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addJsonCoffee(@Valid @RequestBody NewCoffeeRequest newCoffee,
-                                BindingResult result) {
-        if (result.hasErrors()) {
-            log.warn("Binding Errors: {}", result);
-            throw new ValidationException(result.toString());
-        }
+    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
         return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
     }
 
-//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    @ResponseBody
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
-//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
-//    }
-
-//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @ResponseBody
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Coffee addJsonCoffeeWithoutBindingResult(@Valid @RequestBody NewCoffeeRequest newCoffee) {
-//        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
-//    }
-
     @PostMapping(path = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
     public List<Coffee> batchAddCoffee(@RequestParam("file") MultipartFile file) {
         List<Coffee> coffees = new ArrayList<>();
@@ -100,13 +69,11 @@ public class CoffeeController {
     }
 
     @GetMapping(path = "/", params = "!name")
-    @ResponseBody
     public List<Coffee> getAll() {
         return coffeeService.getAllCoffee();
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/{id}")
     public Coffee getById(@PathVariable Long id) {
         Coffee coffee = coffeeService.getCoffee(id);
         log.info("Coffee {}:", coffee);
@@ -114,7 +81,6 @@ public class CoffeeController {
     }
 
     @GetMapping(path = "/", params = "name")
-    @ResponseBody
     public Coffee getByName(@RequestParam String name) {
         return coffeeService.getCoffee(name);
     }

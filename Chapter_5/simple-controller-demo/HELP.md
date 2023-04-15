@@ -2,6 +2,10 @@
 
 ### Reference Documentation
 ### 第一个Spring MVC Controller
+### postman 查询咖啡、创建订单
+### Maven:org.springframework:spring-webmvc:5.3.16 DispatcherServlet的 doService()和doDispatch()
+### @ResponseBody 对应实现类 RequestResponseBodyMethodProcessor.java
+### @RestController 包含了 @Controller 和 @ResponseBody
 
 For further reference, please consider the following sections:
 

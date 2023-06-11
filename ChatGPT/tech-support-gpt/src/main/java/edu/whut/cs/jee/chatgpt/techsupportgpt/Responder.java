@@ -41,7 +41,11 @@ public class Responder
 
     }
 
-
+    /**
+     * 同步调用openai api得到回答的内容
+     * @param content
+     * @return
+     */
 //    public String generateResponse(String content)
 //    {
 //        if(service == null) {
@@ -88,8 +92,6 @@ public class Responder
         StringBuffer sb = new StringBuffer();
         service.streamChatCompletion(chatCompletionRequest)
                 .doOnError(Throwable::printStackTrace)
-//                .blockingForEach(System.out::println);
-//                .blockingForEach(item -> item.getChoices().forEach(item1 -> sb.append(item1.getMessage().getContent())));
                 .blockingForEach(item -> item.getChoices().forEach(item1 -> System.out.print(item1.getMessage().getContent())));
 //        service.shutdownExecutor();
         return sb.toString();

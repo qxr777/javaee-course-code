@@ -60,14 +60,47 @@ services:
       - RABBIT_USER=spring
       - RABBIT_PASSWORD=spring
 
-  waiter-service:
-    image: qxr777/waiter-service:1.0.0
+  api-gateway:
+    image: qxr777/api-gateway:1.0.0
     depends_on:
       - mysql
       - consul
       - rabbitmq
       - zipkin
       - redis
+    links:
+      - consul
+    expose:
+      - 80
+    ports:
+      - 80:80
+
+  config-server:
+    image: qxr777/config-server:1.0.0
+    depends_on:
+#      - mysql
+      - consul
+      - rabbitmq
+#      - zipkin
+#      - redis
+    links:
+      - consul
+      - rabbitmq
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
+
+  waiter-service:
+    image: qxr777/waiter-service:1.0.0
+    restart: always
+    depends_on:
+      - mysql
+      - consul
+      - rabbitmq
+      - zipkin
+      - redis
+      - config-server
     links:
       - mysql
       - consul
@@ -123,18 +156,3 @@ services:
       - 9090:9090
     environment:
       - SERVER_PORT=9090
-
-  api-gateway:
-    image: qxr777/api-gateway:1.0.0
-    depends_on:
-      - mysql
-      - consul
-      - rabbitmq
-      - zipkin
-      - redis
-    links:
-      - consul
-    expose:
-      - 80
-    ports:
-      - 80:80

@@ -1,0 +1,7 @@
+SpringBucks价格表
+咖啡名称	价格
+espresso: 20.00元
+latte: 25.00元
+capuccino: 25.00元
+mocha: 30.00元
+macchiato: 30.00元

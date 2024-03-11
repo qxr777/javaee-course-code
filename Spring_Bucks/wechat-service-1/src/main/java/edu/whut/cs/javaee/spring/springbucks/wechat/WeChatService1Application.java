@@ -79,8 +79,6 @@ public class WeChatService1Application {
         EmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
 
         // 2. Load an example document ("Miles of Smiles" terms of use)
-//        Resource resource = resourceLoader.getResource("classpath:miles-of-smiles-terms-of-use.txt");
-//        Document document = loadDocument(resource.getFile().toPath(), new TextDocumentParser());
         Resource resource = resourceLoader.getResource("classpath:SpringBucks咖啡服务条款.txt");
         Document document = loadDocument(resource.getFile().toPath(), new TextDocumentParser());
         Resource resource2 = resourceLoader.getResource("classpath:SpringBucks价格表.txt");
@@ -98,8 +96,6 @@ public class WeChatService1Application {
                 .embeddingModel(embeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
-//        ingestor.ingest(document);
-        ingestor.ingest(document2);
         ingestor.ingest(document);
 
         return embeddingStore;

@@ -5,6 +5,7 @@ import edu.whut.cs.javaee.spring.springbucks.model.CoffeeCache;
 import edu.whut.cs.javaee.spring.springbucks.repository.CoffeeCacheRepository;
 import edu.whut.cs.javaee.spring.springbucks.repository.CoffeeRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -80,5 +81,13 @@ public class CoffeeService {
                 Example.of(Coffee.builder().name(name).build(), matcher));
         log.info("Coffee Found: {}", coffee);
         return coffee;
+    }
+
+    public List<Coffee> getCoffeeByName(List<String> names) {
+        return coffeeRepository.findByNameInOrderById(names);
+    }
+
+    public Coffee saveCoffee(String name, Money price) {
+        return coffeeRepository.save(Coffee.builder().name(name).price(price).build());
     }
 }

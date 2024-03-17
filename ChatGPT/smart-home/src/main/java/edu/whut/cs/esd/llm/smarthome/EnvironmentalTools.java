@@ -22,7 +22,7 @@ public class EnvironmentalTools {
     @Tool
     public double getTemperature() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Getting temperature..." + thermometer.getTemperature());
+        System.out.println("[Thermometer]: Getting temperature..." + thermometer.getTemperature());
         System.out.println("==========================================================================================");
 
         return thermometer.getTemperature();
@@ -31,7 +31,7 @@ public class EnvironmentalTools {
     @Tool
     public double getHumidity() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Getting humidity..." + thermometer.getHumidity());
+        System.out.println("[Thermometer]: Getting humidity..." + thermometer.getHumidity());
         System.out.println("==========================================================================================");
 
         return thermometer.getHumidity();
@@ -40,7 +40,7 @@ public class EnvironmentalTools {
     @Tool
     public double setExpectedTemperature(double expectedTemperature) {
         System.out.println("==========================================================================================");
-        System.out.printf("[Tool]: Setting expected temperature to %f...%n", expectedTemperature);
+        System.out.printf("[AirConditioner]: Setting expected temperature to %f...%n", expectedTemperature);
         System.out.println("==========================================================================================");
 
         airConditioner.setExpectedTemperature(expectedTemperature);
@@ -50,26 +50,27 @@ public class EnvironmentalTools {
     @Tool
     public double setExpectedHumidity(double expectedHumidity) {
         System.out.println("==========================================================================================");
-        System.out.printf("[Tool]: Setting expected humidity to %f...%n", expectedHumidity);
+        System.out.printf("[Humidifier]: Setting expected humidity to %f...%n", expectedHumidity);
         System.out.println("==========================================================================================");
 
         humidifier.setExpectedHumidity(expectedHumidity);
         return expectedHumidity;
     }
 
+
     @Tool
     public void startHumidifier() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Starting humidifier...");
+        System.out.println("[Humidifier]: Starting humidifier...");
         System.out.println("==========================================================================================");
 
-        humidifier.run();
+        humidifier.start();
     }
 
     @Tool
     public void stopHumidifier() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Stopping humidifier...");
+        System.out.println("[Humidifier]: Stopping humidifier...");
         System.out.println("==========================================================================================");
 
         humidifier.stop();
@@ -78,16 +79,16 @@ public class EnvironmentalTools {
     @Tool
     public void startAirConditioner() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Starting air conditioner...");
+        System.out.println("[AirConditioner]: Starting air conditioner...");
         System.out.println("==========================================================================================");
 
-        airConditioner.run();
+        airConditioner.start();
     }
 
     @Tool
     public void stopAirConditioner() {
         System.out.println("==========================================================================================");
-        System.out.println("[Tool]: Stopping air conditioner...");
+        System.out.println("[AirConditioner]: Stopping air conditioner...");
         System.out.println("==========================================================================================");
 
         airConditioner.stop();

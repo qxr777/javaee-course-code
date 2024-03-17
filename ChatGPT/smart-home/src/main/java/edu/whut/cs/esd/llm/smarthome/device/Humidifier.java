@@ -3,7 +3,7 @@ package edu.whut.cs.esd.llm.smarthome.device;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Humidifier {
+public class Humidifier extends BaseDevice{
 
     private double expectedHumidity;
 
@@ -12,14 +12,10 @@ public class Humidifier {
     }
 
     public void setExpectedHumidity(double expectedHumidity) {
+        if (getState() == DeviceState.STOPPED) {
+            start();
+        }
         this.expectedHumidity = expectedHumidity;
     }
 
-    public void run() {
-        System.out.println("Humidifier is running.");
-    }
-
-    public void stop() {
-        System.out.println("Humidifier is stopping.");
-    }
 }

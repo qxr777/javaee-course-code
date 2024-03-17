@@ -3,10 +3,14 @@ package edu.whut.cs.esd.llm.smarthome.device;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AirConditioner {
+public class AirConditioner extends BaseDevice{
+
     private double expectedTemperature;
 
     public void setExpectedTemperature(double expectedTemperature) {
+        if (getState() == DeviceState.STOPPED) {
+            start();
+        }
         this.expectedTemperature = expectedTemperature;
     }
 
@@ -14,11 +18,4 @@ public class AirConditioner {
         return expectedTemperature;
     }
 
-    public void run() {
-        System.out.println("AirConditioner is running.");
-    }
-
-    public void stop() {
-        System.out.println("AirConditioner is stopping.");
-    }
 }

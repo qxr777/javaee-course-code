@@ -1,0 +1,5 @@
+由于本地9090端口被ClashX占用，所以prometheus宿主机端口映射从9090改为9091
+
+grafana设置数据源用docker主机名和内部端口号  http://prometheus:9090
+
+grafana登录admin，密码从admin改为123456

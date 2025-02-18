@@ -57,6 +57,7 @@ public class CoffeeService {
                     .name(coffeeCache.getName())
                     .price(coffeeCache.getPrice())
                     .build();
+            coffee.setId(coffeeCache.getId());
             log.info("Coffee {} found in cache.", coffeeCache);
             return Optional.of(coffee);
         } else {

@@ -31,25 +31,25 @@ public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
 
-    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.CREATED)
-    public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
-                            BindingResult result) {
-        if (result.hasErrors()) {
-            // 这里先简单处理一下，后续讲到异常处理时会改
-            log.warn("Binding Errors: {}", result);
-            return null;
-        }
-        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
-    }
-
 //    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 //    @ResponseBody
 //    @ResponseStatus(HttpStatus.CREATED)
-//    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
+//    public Coffee addCoffee(@Valid NewCoffeeRequest newCoffee,
+//                            BindingResult result) {
+//        if (result.hasErrors()) {
+//            // 这里先简单处理一下，后续讲到异常处理时会改
+//            log.warn("Binding Errors: {}", result);
+//            return null;
+//        }
 //        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
 //    }
+
+    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Coffee addCoffeeWithoutBindingResult(@Valid NewCoffeeRequest newCoffee) {
+        return coffeeService.saveCoffee(newCoffee.getName(), newCoffee.getPrice());
+    }
 
     @PostMapping(path = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody

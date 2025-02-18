@@ -1,7 +1,7 @@
 {
 	"_type": "Project",
 	"_id": "AAAAAAFFxl2a6D9NCaE=",
-	"name": "Untitled",
+	"name": "SpringBucks项目模型",
 	"ownedElements": [
 		{
 			"_type": "UMLModel",
@@ -12564,7 +12564,7 @@
 														"$ref": "AAAAAAGGz39i0h+49IM="
 													},
 													"font": "Arial;13;0",
-													"left": 78.97900390625,
+													"left": 83.37593078613281,
 													"top": 13,
 													"width": 92,
 													"height": 13,
@@ -12579,7 +12579,7 @@
 													"font": "Arial;13;1",
 													"left": 13,
 													"top": 13,
-													"width": 60.97900390625,
+													"width": 65.37593078613281,
 													"height": 13,
 													"text": "interaction"
 												}
@@ -12647,7 +12647,7 @@
 															},
 															"visible": false,
 															"font": "Arial;13;0",
-															"width": 106.20263671875,
+															"width": 110.65589904785156,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -12760,7 +12760,7 @@
 															},
 															"visible": false,
 															"font": "Arial;13;0",
-															"width": 106.20263671875,
+															"width": 110.65589904785156,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -12873,7 +12873,7 @@
 															},
 															"visible": false,
 															"font": "Arial;13;0",
-															"width": 106.20263671875,
+															"width": 110.65589904785156,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -13290,7 +13290,7 @@
 													"font": "Arial;13;0",
 													"left": 357,
 													"top": 304,
-													"width": 96.0654296875,
+													"width": 97.88996887207031,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -13512,7 +13512,7 @@
 													"font": "Arial;13;0",
 													"left": 360,
 													"top": 418,
-													"width": 96.0654296875,
+													"width": 97.88996887207031,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -13622,9 +13622,9 @@
 														"$ref": "AAAAAAGG1gg0RJD8Lww="
 													},
 													"font": "Arial;13;0",
-													"left": 178,
+													"left": 177,
 													"top": 448,
-													"width": 83.0654296875,
+													"width": 84.20097351074219,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -14239,7 +14239,7 @@
 									"font": "Arial;13;0",
 									"left": 320,
 									"top": 318,
-									"width": 126.09228515625,
+									"width": 136.77584838867188,
 									"height": 38
 								},
 								{
@@ -14799,7 +14799,7 @@
 									"font": "Arial;13;0",
 									"left": 512,
 									"top": 422,
-									"width": 181.005859375,
+									"width": 191.63584899902344,
 									"height": 38
 								},
 								{
@@ -16109,7 +16109,7 @@
 									"font": "Arial;13;0",
 									"left": 528,
 									"top": 257,
-									"width": 164.8701171875,
+									"width": 174.6318359375,
 									"height": 53
 								},
 								{
@@ -16689,9 +16689,9 @@
 										"$ref": "AAAAAAGG2KRso6rPqA4="
 									},
 									"font": "Arial;13;0",
-									"left": 233,
+									"left": 231,
 									"top": 257,
-									"width": 35.775390625,
+									"width": 38.14195251464844,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -17396,7 +17396,7 @@
 											"font": "Arial;13;0",
 											"left": -48,
 											"top": -16,
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -17576,7 +17576,7 @@
 											"font": "Arial;13;0",
 											"left": 48,
 											"top": -64,
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -17756,7 +17756,7 @@
 											"font": "Arial;13;0",
 											"left": 16,
 											"top": -144,
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -17876,7 +17876,7 @@
 											"font": "Arial;13;0",
 											"left": -144,
 											"top": -256,
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -18338,7 +18338,7 @@
 											"font": "Arial;13;0",
 											"left": -112,
 											"top": -80,
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -18702,7 +18702,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"width": 137.033203125,
+											"width": 144.10487365722656,
 											"height": 13,
 											"text": "(from Component View)"
 										},
@@ -18839,7 +18839,7 @@
 									"font": "Arial;13;0",
 									"left": 430,
 									"top": 617,
-									"width": 33.591796875,
+									"width": 33.864990234375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -18934,7 +18934,7 @@
 									"font": "Arial;13;0",
 									"left": 293,
 									"top": 333,
-									"width": 33.591796875,
+									"width": 33.864990234375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -19029,7 +19029,7 @@
 									"font": "Arial;13;0",
 									"left": 495,
 									"top": 482,
-									"width": 33.591796875,
+									"width": 33.864990234375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -19124,7 +19124,7 @@
 									"font": "Arial;13;0",
 									"left": 542,
 									"top": 332,
-									"width": 33.591796875,
+									"width": 33.864990234375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,

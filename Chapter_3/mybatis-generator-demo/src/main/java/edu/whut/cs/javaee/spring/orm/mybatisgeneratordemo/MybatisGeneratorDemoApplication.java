@@ -1,8 +1,8 @@
 package edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo;
 
-//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.mapper.CoffeeMapper;
-//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.Coffee;
-//import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.CoffeeExample;
+import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.mapper.CoffeeMapper;
+import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.Coffee;
+import edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.model.CoffeeExample;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
@@ -25,8 +25,8 @@ import java.util.List;
 @Slf4j
 @MapperScan("edu.whut.cs.javaee.spring.orm.mybatisgeneratordemo.mapper")
 public class MybatisGeneratorDemoApplication implements ApplicationRunner {
-//	@Autowired
-//	private CoffeeMapper coffeeMapper;
+	@Autowired
+	private CoffeeMapper coffeeMapper;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MybatisGeneratorDemoApplication.class, args);
@@ -48,28 +48,28 @@ public class MybatisGeneratorDemoApplication implements ApplicationRunner {
 		myBatisGenerator.generate(null);
 	}
 
-//	private void playWithArtifacts() {
-//		Coffee espresso = new Coffee()
-//				.withName("espresso")
-//				.withPrice(Money.of(CurrencyUnit.of("CNY"), 20.0))
-//				.withCreateTime(new Date())
-//				.withUpdateTime(new Date());
-//		coffeeMapper.insert(espresso);
-//
-//		Coffee latte = new Coffee()
-//				.withName("latte")
-//				.withPrice(Money.of(CurrencyUnit.of("CNY"), 30.0))
-//				.withCreateTime(new Date())
-//				.withUpdateTime(new Date());
-//		coffeeMapper.insert(latte);
-//
-//		Coffee s = coffeeMapper.selectByPrimaryKey(1L);
-//		log.info("Coffee {}", s);
-//
-//		CoffeeExample example = new CoffeeExample();
-//		example.createCriteria().andNameEqualTo("latte");
-//		List<Coffee> list = coffeeMapper.selectByExample(example);
-//		list.forEach(e -> log.info("selectByExample: {}", e));
-//	}
+	private void playWithArtifacts() {
+		Coffee espresso = new Coffee()
+				.withName("espresso")
+				.withPrice(Money.of(CurrencyUnit.of("CNY"), 20.0))
+				.withCreateTime(new Date())
+				.withUpdateTime(new Date());
+		coffeeMapper.insert(espresso);
+
+		Coffee latte = new Coffee()
+				.withName("latte")
+				.withPrice(Money.of(CurrencyUnit.of("CNY"), 30.0))
+				.withCreateTime(new Date())
+				.withUpdateTime(new Date());
+		coffeeMapper.insert(latte);
+
+		Coffee s = coffeeMapper.selectByPrimaryKey(1L);
+		log.info("Coffee {}", s);
+
+		CoffeeExample example = new CoffeeExample();
+		example.createCriteria().andNameEqualTo("latte");
+		List<Coffee> list = coffeeMapper.selectByExample(example);
+		list.forEach(e -> log.info("selectByExample: {}", e));
+	}
 }
 

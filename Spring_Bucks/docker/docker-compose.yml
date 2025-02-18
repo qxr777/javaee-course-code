@@ -1,4 +1,4 @@
-version: '2'
+#version: '2'
 services:
     mysql:
         container_name: spring_bucks_mysql

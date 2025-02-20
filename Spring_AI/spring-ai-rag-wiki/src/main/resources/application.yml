@@ -6,7 +6,7 @@ app:
 spring:
   ai:
     openai:
-      base-url: https://api.bianxie.ai
+      base-url: ${OPENAI_BASE_URL}
       api-key: ${OPENAI_API_KEY}
       chat:
         options:

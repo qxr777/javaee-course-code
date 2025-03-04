@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/order")
 @Slf4j
@@ -26,6 +28,11 @@ public class CoffeeOrderController {
         CoffeeOrder order = orderService.get(id);
         log.info("Get Order: {}", order);
         return order;
+    }
+
+    @GetMapping(path = "/", params = "!name")
+    public List<CoffeeOrder> getAll() {
+        return orderService.getAllOrder();
     }
 
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_JSON_VALUE,

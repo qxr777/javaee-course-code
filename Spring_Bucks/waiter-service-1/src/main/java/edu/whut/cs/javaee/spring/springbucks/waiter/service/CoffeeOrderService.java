@@ -12,6 +12,7 @@ import io.micrometer.core.instrument.binder.MeterBinder;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +42,11 @@ public class CoffeeOrderService implements MeterBinder {
 
     public CoffeeOrder get(Long id) {
         return orderRepository.getOne(id);
+    }
+
+    public List<CoffeeOrder> getAllOrder() {
+        log.info("All orders will be returned");
+        return orderRepository.findAll(Sort.by("id"));
     }
 
     public CoffeeOrder createOrder(String customer, Coffee...coffee) {

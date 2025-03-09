@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咖啡连锁店客服系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        /* 左侧聊天区域 */
+        .chat-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+        
+        .chat-header {
+            padding: 15px;
+            background-color: #5c4033;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: #e1f5fe;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .service-message {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            background-color: #5c4033;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* 右侧表格区域 */
+        .info-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 0;
+        }
+        
+        .tab-header {
+            display: flex;
+            background-color: #f0f0f0;
+        }
+        
+        .tab {
+            padding: 15px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .tab.active {
+            background-color: #5c4033;
+            color: white;
+        }
+        
+        .tab-content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .order-status {
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧聊天区域 -->
+        <div class="chat-section">
+            <div class="chat-header">
+                咖啡连锁店客服中心
+            </div>
+            <div class="chat-messages">
+                <div class="message service-message">
+                    欢迎光临咖啡连锁店客服系统，有什么可以帮您?
+                </div>
+                <div class="message user-message">
+                    我想了解一下你们的特色咖啡
+                </div>
+                <div class="message service-message">
+                    我们的特色咖啡包括手冲埃塞俄比亚耶加雪菲和蓝山咖啡，右侧菜单可以查看详情和价格。
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的问题...">
+                <button>发送</button>
+            </div>
+        </div>
+        
+        <!-- 右侧表格区域 -->
+        <div class="info-section">
+            <div class="tab-header">
+                <div class="tab active" onclick="switchTab('coffee-menu')">咖啡菜单</div>
+                <div class="tab" onclick="switchTab('order-list')">订单列表</div>
+            </div>
+            
+            <!-- 咖啡菜单表格 -->
+            <div id="coffee-menu" class="tab-content">
+                <h3>在售咖啡列表</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>描述</th>
+                            <th>价格</th>
+                            <th>库存</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>美式咖啡</td>
+                            <td>浓缩咖啡加水</td>
+                            <td>¥22</td>
+                            <td>充足</td>
+                        </tr>
+                        <tr>
+                            <td>拿铁</td>
+                            <td>浓缩咖啡加牛奶</td>
+                            <td>¥26</td>
+                            <td>充足</td>
+                        </tr>
+                        <tr>
+                            <td>卡布奇诺</td>
+                            <td>浓缩咖啡、牛奶和奶泡</td>
+                            <td>¥28</td>
+                            <td>充足</td>
+                        </tr>
+                        <tr>
+                            <td>摩卡</td>
+                            <td>浓缩咖啡、巧克力和牛奶</td>
+                            <td>¥30</td>
+                            <td>充足</td>
+                        </tr>
+                        <tr>
+                            <td>耶加雪菲</td>
+                            <td>埃塞俄比亚单品手冲</td>
+                            <td>¥38</td>
+                            <td>有限</td>
+                        </tr>
+                        <tr>
+                            <td>蓝山咖啡</td>
+                            <td>牙买加蓝山精品咖啡</td>
+                            <td>¥45</td>
+                            <td>有限</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 订单列表表格 -->
+            <div id="order-list" class="tab-content hidden">
+                <h3>最近订单</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>咖啡类型</th>
+                            <th>数量</th>
+                            <th>金额</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12345</td>
+                            <td>拿铁</td>
+                            <td>2</td>
+                            <td>¥52</td>
+                            <td><span class="order-status status-completed">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12346</td>
+                            <td>美式咖啡</td>
+                            <td>1</td>
+                            <td>¥22</td>
+                            <td><span class="order-status status-completed">已完成</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12347</td>
+                            <td>蓝山咖啡</td>
+                            <td>1</td>
+                            <td>¥45</td>
+                            <td><span class="order-status status-pending">处理中</span></td>
+                        </tr>
+                        <tr>
+                            <td>#12348</td>
+                            <td>摩卡</td>
+                            <td>3</td>
+                            <td>¥90</td>
+                            <td><span class="order-status status-pending">处理中</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            // 隐藏所有内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // 显示选中标签的内容
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // 更新标签样式
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 设置当前标签为活动状态
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html> 

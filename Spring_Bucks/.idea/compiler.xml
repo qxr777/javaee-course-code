@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-boot-admin" />
+        <module name="turbine" />
+        <module name="chat-service-1" />
+        <module name="spring-bucks-0" />
+        <module name="spring-bucks-1" />
+        <module name="spring-bucks-2" />
+        <module name="waiter-service-1" />
+        <module name="waiter-service-0" />
+        <module name="barista-service-1" />
+        <module name="config-server" />
+        <module name="hystrix-dashboard" />
+        <module name="wechat-service-1" />
+        <module name="api-gateway" />
+        <module name="customer-service-1" />
+        <module name="customer-service-0" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="-parameters" />
+      <module name="barista-service-1" options="-parameters" />
+      <module name="chat-service-1" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="customer-service-0" options="-parameters" />
+      <module name="customer-service-1" options="-parameters" />
+      <module name="hystrix-dashboard" options="-parameters" />
+      <module name="spring-boot-admin" options="-parameters" />
+      <module name="spring-bucks-0" options="-parameters" />
+      <module name="spring-bucks-1" options="-parameters" />
+      <module name="spring-bucks-2" options="-parameters" />
+      <module name="turbine" options="-parameters" />
+      <module name="waiter-service-0" options="-parameters" />
+      <module name="waiter-service-1" options="-parameters" />
+      <module name="wechat-service-1" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/barista-service-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/barista-service-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chat-service-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/chat-service-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customer-service-0/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customer-service-0/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customer-service-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customer-service-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hystrix-dashboard/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hystrix-dashboard/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-0/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-0/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-bucks-2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/turbine/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/turbine/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/waiter-service-0/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/waiter-service-0/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/waiter-service-1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/waiter-service-1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wechat-service-1/src/main/java" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SB-Cloud" type="CompoundRunConfigurationType">
+    <toRun name="Cloud_ApiGateway" type="SpringBootApplicationConfigurationType" />
+    <toRun name="Cloud_BaristaService1Application" type="SpringBootApplicationConfigurationType" />
+    <toRun name="Cloud_ConfigServer" type="SpringBootApplicationConfigurationType" />
+    <toRun name="Cloud_CustomerService1Application" type="SpringBootApplicationConfigurationType" />
+    <toRun name="Cloud_WaiterService1Application" type="SpringBootApplicationConfigurationType" />
+    <toRun name="Cloud_WeChatService1Application" type="SpringBootApplicationConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

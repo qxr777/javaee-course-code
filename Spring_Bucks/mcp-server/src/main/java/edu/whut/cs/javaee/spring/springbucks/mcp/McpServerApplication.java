@@ -25,6 +25,7 @@ public class McpServerApplication {
 		return MethodToolCallbackProvider.builder().toolObjects(coffeeService).build();
 	}
 
+
 	public record TextInput(String input) {
 	}
 

@@ -24,7 +24,7 @@ import org.springframework.ai.chat.client.ChatClient;
  * easier task.
  * 
  * @author Christian Tzolov
- * @see org.springframework.ai.chat.client.ChatClient
+ * @see ChatClient
  * @see <a href="https://docs.spring.io/spring-ai/reference/1.0/api/chatclient.html">Spring AI ChatClient</a>
  * @see <a href=
  *      "https://www.anthropic.com/research/building-effective-agents">Building

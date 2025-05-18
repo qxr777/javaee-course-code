@@ -77,13 +77,12 @@ import java.util.List;
 public class EvaluatorOptimizer {
 
 	public static final String DEFAULT_GENERATOR_PROMPT = """
-			您的目标是根据输入完成任务。如果有前人的反馈
-				反馈，您应加以反思，以改进您的解决方案。
+			您的目标是根据输入完成任务。如果有前人的反馈，您应加以反思，以改进您的解决方案。
 	   
 				关键：您的回复必须是单行有效的 JSON 格式，除了明确用 \\n 转义的字符串外，不得有任何换行符。
 				以下是应遵循的准确格式，包括所有引号和大括号：
 	   
-				{"thoughts": "Brief description here", "response": "public class Example {\\n // Code here\\n}"}
+				{"thoughts": "在这里简要描述", "response": "public class Example {\\n // Code here\\n}"}
 	   
 				响应字段的规则：
 				1. 所有换行符必须使用 \\n
@@ -94,9 +93,9 @@ public class EvaluatorOptimizer {
 				6. Java 代码必须完整并正确转义
 	   
 				格式正确的回复示例：
-				{"thoughts": "Implementing counter", "response": "public class Counter {\\n private int count;\\n public Counter() {\\n count = 0;\\n }\\n public void increment() {\\n count++;\\n }\\n}"}
+				{"thoughts": "实现Counter", "response": "public class Counter {\\n private int count;\\n public Counter() {\\n count = 0;\\n }\\n public void increment() {\\n count++;\\n }\\n}"}
  
-			    请完全遵循此格式 - 您的响应必须是单行有效 JSON 格式。
+			    请完全遵循此格式 - 您的响应必须是单行有效 JSON 格式。    
 			""";
 
 	public static final String DEFAULT_EVALUATOR_PROMPT = """
@@ -104,10 +103,10 @@ public class EvaluatorOptimizer {
 			确保代码有正确的 javadoc 文档。
 			在单行中以完全相同的 JSON 格式进行响应：
 
-			{"evaluation": "PASS, NEEDS_IMPROVEMENT, or FAIL", "feedback": "Your feedback here"}
+			{"evaluation": "PASS, NEEDS_IMPROVEMENT, or FAIL", "feedback": "这里是您的反馈"}
 
 			评价字段必须是 "PASS"、"NEEDS_IMPROVEMENT"或 "FAIL"之一
-			只有在符合所有标准且无需改进时，才使用 "PASS"。
+			基本符合所有标准且无需改进时，才使用 "PASS"。
 			""";
 
 	/**
@@ -194,46 +193,48 @@ public class EvaluatorOptimizer {
 		return loop(task, "", memory, chainOfThought);
 	}
 
-	/**
-	 * Internal recursive implementation of the evaluator-optimizer loop. This
-	 * method
-	 * maintains the state of previous attempts and feedback while recursively
-	 * refining
-	 * the solution until it meets the evaluation criteria.
-	 * 
-	 * @param task           The original task to be solved
-	 * @param context        Accumulated context including previous attempts and
-	 *                       feedback
-	 * @param memory         List of previous solution attempts for reference
-	 * @param chainOfThought List tracking the evolution of solutions and reasoning
-	 * @return A RefinedResponse containing the final solution and complete solution
-	 *         history
-	 */
-	private RefinedResponse loop(String task, String context, List<String> memory,
-			List<Generation> chainOfThought) {
+/**
+ * Internal iterative implementation of the evaluator-optimizer loop with max iteration limit.
+ * This method maintains the state of previous attempts and feedback while refining
+ * the solution until it meets the evaluation criteria or reaches max iterations.
+ *
+ * @param task           The original task to be solved
+ * @param context        Accumulated context including previous attempts and feedback
+ * @param memory         List of previous solution attempts for reference
+ * @param chainOfThought List tracking the evolution of solutions and reasoning
+ * @return A RefinedResponse containing the final solution or best attempt after max iterations
+ */
+private RefinedResponse loop(String task, String context, List<String> memory,
+                             List<Generation> chainOfThought) {
 
-		Generation generation = generate(task, context);
-		memory.add(generation.response());
-		chainOfThought.add(generation);
+    int maxIterations = 5; // 设置最大迭代次数，防止无限循环或栈溢出
+    int iteration = 0;
 
-		EvaluationResponse evaluationResponse = evalute(generation.response(), task);
+    StringBuilder currentContext = new StringBuilder(context);
 
-		if (evaluationResponse.evaluation().equals(EvaluationResponse.Evaluation.PASS)) {
-			// Solution is accepted!
-			return new RefinedResponse(generation.response(), chainOfThought);
-		}
+    while (iteration < maxIterations) {
+        Generation generation = generate(task, currentContext.toString());
+        memory.add(generation.response());
+        chainOfThought.add(generation);
 
-		// Accumulated new context including the last and the previous attempts and
-		// feedbacks.
-		StringBuilder newContext = new StringBuilder();
-		newContext.append("Previous attempts:");
-		for (String m : memory) {
-			newContext.append("\n- ").append(m);
-		}
-		newContext.append("\nFeedback: ").append(evaluationResponse.feedback());
+        EvaluationResponse evaluationResponse = evalute(generation.response(), task);
 
-		return loop(task, newContext.toString(), memory, chainOfThought);
-	}
+        if (evaluationResponse.evaluation().equals(EvaluationResponse.Evaluation.PASS)) {
+            // Solution is accepted!
+            return new RefinedResponse(generation.response(), chainOfThought);
+        }
+
+        // Append only the latest attempt and feedback to avoid rebuilding full context every time
+        currentContext.append("\nPrevious attempt:\n- ").append(generation.response());
+        currentContext.append("\nFeedback: ").append(evaluationResponse.feedback());
+
+        iteration++;
+    }
+
+    // 达到最大尝试次数仍未通过评估，返回最后一次尝试的结果
+    return new RefinedResponse(chainOfThought.get(chainOfThought.size() - 1).response(), chainOfThought);
+}
+
 
 	/**
 	 * Generates or refines a solution based on the given task and feedback context.

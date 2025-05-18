@@ -41,16 +41,12 @@ public class Application {
 		return args -> {
 			RefinedResponse refinedResponse = new EvaluatorOptimizer(chatClient).loop("""
 					<user input>
-					用 Java 实现堆栈：
-					1. push(x)
-					2. pop()
-					3. getMin()
-					所有操作均应为 O(1)。
-					所有内部字段都应是私有的，使用时应以 "this."为前缀。
+					编写一个数值积分的龙贝格算法程序
 					</user input>
 					""");
 
-			System.out.println("FINAL OUTPUT:\n : " + refinedResponse);
+			System.out.println("FINAL OUTPUT:\n : " + refinedResponse.solution());
+			System.out.println("NUMBER OF ITERATION:\n : " + refinedResponse.chainOfThought().size());
 		};
 	}
 }

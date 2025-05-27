@@ -39,7 +39,9 @@ public class Application {
 		return args -> {
 
 			new OrchestratorWorkers(chatClient)
-			        .process("生成一个四月前往成都的旅游计划");
+					.process("我希望全面掌握歼10CE的信息");
+//					.process("研究文本驱动生成场景的3D高斯泼溅模型轻量化");
+//			        .process("生成一个四月前往成都的旅游计划");
 
 		};
 	}

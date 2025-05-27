@@ -41,7 +41,7 @@ public class Application {
 		return args -> {
 			RefinedResponse refinedResponse = new EvaluatorOptimizer(chatClient).loop("""
 					<user input>
-					编写一个数值积分的龙贝格算法程序
+					编写一个曲线拟合的数值分析程序
 					</user input>
 					""");
 

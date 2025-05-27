@@ -71,7 +71,7 @@ public class OrchestratorWorkers {
 	private final String workerPrompt;
 
 	public static final String DEFAULT_ORCHESTRATOR_PROMPT = """
-			分析这项任务，并将其分解为 2-3 种不同的方法：
+			分析这项任务，并将其分解为不超过5步子任务：
 
 			任务: {task}
 			
@@ -80,13 +80,17 @@ public class OrchestratorWorkers {
 			"analysis"： "解释您对任务的理解，以及哪些变化是有价值的。重点说明每种方法如何服务于任务的不同方面。"、
 			"tasks"： [
 				\\{
-				"type"： "formal"、
-				"description"： "写一个精确的技术版本，强调规格"
+				"step"： "1"、
+				"description"： "子任务描述在此"
 				\\},
 				\\{
-				"type"： "conversational"、
-				"description"： "写一个吸引人的、友好的版本，与读者建立联系"
-				\\}
+				"step"： "2"、
+				"description"： "子任务描述在此"
+				\\},
+				\\{
+				"step"： "3"、
+				"description"： "子任务描述在此"
+				\\}......
 			]
 			\\}
 			""";
@@ -94,7 +98,7 @@ public class OrchestratorWorkers {
 	public static final String DEFAULT_WORKER_PROMPT = """
 			根据以下内容生成内容：
 			任务： {original_task}
-			样式： {task_type}
+			步数： {task_step}
 			指导原则： {task_description}
 			""";
 
@@ -102,11 +106,11 @@ public class OrchestratorWorkers {
 	 * Represents a subtask identified by the orchestrator that needs to be executed
 	 * by a worker.
 	 * 
-	 * @param type        The type or category of the task (e.g., "formal",
+	 * @param step        The type or category of the task (e.g., "formal",
 	 *                    "conversational")
 	 * @param description Detailed description of what the worker should accomplish
 	 */
-	public static record Task(String type, String description) {
+	public static record Task(String step, String description) {
 	}
 
 	/**
@@ -188,12 +192,18 @@ public class OrchestratorWorkers {
 		List<String> workerResponses = orchestratorResponse.tasks().stream().map(task -> this.chatClient.prompt()
 				.user(u -> u.text(this.workerPrompt)
 						.param("original_task", taskDescription)
-						.param("task_type", task.type())
+						.param("task_step", task.step())
 						.param("task_description", task.description()))
 				.call()
 				.content()).toList();
 
-		System.out.println("\n=== WORKER OUTPUT ===\n" + workerResponses);
+		System.out.println("\n=== WORKER OUTPUT ===\n" );
+
+		for(int i = 0; i < workerResponses.size(); i++) {
+			System.out.println("Worker " + (i + 1) + ": ");
+			System.out.println("task_description: " + orchestratorResponse.tasks().get(i));
+			System.out.println(workerResponses.get(i));
+		}
 
 		return new FinalResponse(orchestratorResponse.analysis(), workerResponses);
 	}
